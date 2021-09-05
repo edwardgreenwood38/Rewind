@@ -41,7 +41,7 @@
                         <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/edwardgreenwood38/Rewind">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="#">About</a>
@@ -59,17 +59,60 @@
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        // call helloworld
-                        function HelloWorld() {
-                            alert("hello world");
+                        // get string that user entered
+                        // controller
+                        function getString() {
+                            // always hide to start
+                            document.getElementById("alert").classList.add("invisible");
+
+                            let userString = document.getElementById("userString").value;
+
+                            let revString = reverseString(userString);
+
+                            displayString(revString);
+                        }
+
+                        // reverse the string
+                        //logic
+                        function reverseString(userString) {
+                            let revString = [];
+
+                            // reverse a string using a for loop
+                            for (let i = userString.length - 1; i >= 0; i--)
+                            {
+                                revString += userString[i];
+                            }
+
+                            return revString;
+                        }
+
+                        // dsiplay the reversed string
+                        // view 
+                        function displayString(revString) {
+                            // write message to page
+                            document.getElementById("msg").innerHTML = `Your string reversed is: ${revString}`;
+
+                            // show the alert box
+                            document.getElementById("alert").classList.remove("invisible");
                         }
                     </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
                     <p>The Code is structured in one function.</p>
-                    <h5>HelloWorld</h5>
-                    <p>helloworld is a fucntion that displays an alert with a message of "Hello World"</p>
+                    <h5>getString</h5>
+                    <p>getString function first makes sure the final display is hidden, by adding to the classlist the Bootstrap class 'invisible'.</p>
+                    <p>Next it reads the input that the user entered. It then passes the userString into the the reverseString function.</p>
+                    <p>Finally it takes what the reversString function returned and passed that to the displayString function.</p>
+                    <h5>reverseString</h5>
+                    <p>reverseString function has one parameter that contains the text to reverse. We start by creating a blank array.</p>
+                    <p>We use a for loop to start at the end of the string and add the single character to the array. Counting down each loop.</p>
+                    <p>We return the value of the array.</p>
+                    <h5>displayString</h5>
+                    <p>displayString function first adds the revString text to the tag with the id of 'msg'.</p>
+                    <p>We then unhide the tag with the id of alert by removing the 'invisible' class from the tag.</p>
+                    <br>
+                    <p>Note: the alert area is via bootstrap classes and is using the class 'invisible' to initially hide it.</p>
                 </div>
             </div>
         </div>
